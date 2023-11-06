@@ -59,7 +59,7 @@ in
       description = lib.mdDoc "Extra flags to pass to the rke2 command.";
       type = types.listOf types.str;
       default = [ ];
-      example = [ "--no-deploy" "traefik" "--cluster-cidr" "10.24.0.0/16" ];
+      example = [ "--disable" "rke2-ingress-nginx" "--cluster-cidr" "10.24.0.0/16" ];
     };
 
     environmentFile = mkOption {

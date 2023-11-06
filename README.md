@@ -4,7 +4,7 @@
 
 RKE2, also known as RKE Government, is Rancher's next-generation Kubernetes distribution.
 
-The rke2 package is already in nixpkgs. 
+The RKE2 package is already in nixpkgs.
 
 This repository provides the NixOS module for it.
 
