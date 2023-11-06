@@ -143,7 +143,7 @@ in
       path =
         optional config.boot.zfs.enabled config.boot.zfs.package ++ [
           pkgs.iptables
-          pkgs.mount
+          pkgs.util-linuxMinimal
         ];
       serviceConfig = {
         Type = if cfg.role == "agent" then "exec" else "notify";
