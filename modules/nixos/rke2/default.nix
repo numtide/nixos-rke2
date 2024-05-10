@@ -107,8 +107,13 @@ in
       }
     ];
 
-    # Convenient utilities
-    environment.systemPackages = [
+    # Allow using kubectl on the server
+    environment.sessionVariables = lib.optionalAttrs (cfg.role == "server") {
+      KUBECONFIG = "/etc/rancher/rke2/rke2.yaml";
+    };
+
+    # Convenient utilities on the server
+    environment.systemPackages = lib.optionals (cfg.role == "server") [
       config.services.rke2.package
       pkgs.kubectl
       pkgs.kubernetes-helm
