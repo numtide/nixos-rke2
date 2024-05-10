@@ -12,7 +12,7 @@ First, add this project to your flake inputs:
 
 ```nix
 inputs = {
-  rke2.url = "github.com/numtide/nixos-rke2";
+  rke2.url = "github:numtide/nixos-rke2";
 }
 ```
 

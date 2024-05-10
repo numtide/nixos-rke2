@@ -1,5 +1,5 @@
 {
-  description = "RKE2";
+  description = "NixOS RKE2";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
