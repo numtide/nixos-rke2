@@ -142,8 +142,8 @@ in
 
     systemd.services.rke2 = {
       description = "rke2 service";
-      after = [ "firewall.service" "network-online.target" ];
-      wants = [ "firewall.service" "network-online.target" ];
+      after = [ "network-online.target" ];
+      wants = [ "network-online.target" ];
       wantedBy = [ "multi-user.target" ];
       path =
         optional config.boot.zfs.enabled config.boot.zfs.package ++ [
