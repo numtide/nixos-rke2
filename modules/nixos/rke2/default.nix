@@ -2,7 +2,7 @@
 
 with lib;
 let
-  cfg = config.services.rke2;
+  cfg = config.services.numtide-rke2;
   settingsFormat = pkgs.formats.yaml { };
   configFile =
     if cfg.configFile != null then
@@ -13,7 +13,7 @@ let
       null;
 in
 {
-  options.services.rke2 = {
+  options.services.numtide-rke2 = {
     enable = mkEnableOption (lib.mdDoc "rke2");
 
     package = lib.mkPackageOptionMD pkgs "rke2" { };
@@ -114,7 +114,7 @@ in
 
     # Convenient utilities on the server
     environment.systemPackages = lib.optionals (cfg.role == "server") [
-      config.services.rke2.package
+      cfg.package
       pkgs.kubectl
       pkgs.kubernetes-helm
     ];
@@ -140,7 +140,7 @@ in
 
     # If you wish to utilize the metrics server, you will need to open port 10250 on each node.
 
-    systemd.services.rke2 = {
+    systemd.services.numtide-rke2 = {
       description = "rke2 service";
       after = [ "network-online.target" ];
       wants = [ "network-online.target" ];
