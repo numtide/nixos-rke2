@@ -28,7 +28,7 @@ Then configure your master node like this (single-node deployment):
   # Don't interfere with k8s
   networking.firewall.enable = lib.mkForce false;
 
-  services.rke2 = {
+  services.numtide-rke2 = {
     enable = true;
     role = "server";
     extraFlags = [
@@ -60,7 +60,7 @@ Stick the token in a file and encrypt it with SOPS. Then deploy your workers:
   # Don't interfere with k8s
   networking.firewall.enable = lib.mkForce false;
 
-  services.rke2 = {  
+  services.numtide-rke2 = {  
     enable = true;                                                         
     role = "agent";                                                           
     serverAddr = "https://<TODO>:9345";                                    
