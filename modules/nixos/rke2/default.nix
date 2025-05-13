@@ -16,7 +16,7 @@ in
   options.services.numtide-rke2 = {
     enable = mkEnableOption (lib.mdDoc "rke2");
 
-    package = lib.mkPackageOptionMD pkgs "rke2" { };
+    package = lib.mkPackageOption pkgs "rke2" { };
 
     role = mkOption {
       description = lib.mdDoc ''
