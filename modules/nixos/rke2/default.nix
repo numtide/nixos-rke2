@@ -16,7 +16,15 @@ in
   options.services.numtide-rke2 = {
     enable = mkEnableOption (lib.mdDoc "rke2");
 
-    package = lib.mkPackageOption pkgs "rke2" { };
+    package = lib.mkPackageOption pkgs "rke2" { } // {
+      default = pkgs."rke2".overrideAttrs (finalAttrs: prevAttrs: {
+        configurePhase = lib.replaceString "cp -r" "cp --no-preserve=all --recursive" prevAttrs.configurePhase;
+
+        postConfigure = ''
+          sed -i 's/logrus.Fatalf/logrus.Warnf/' "vendor/github.com/k3s-io/k3s/pkg/cli/cmds/golang.go"
+        '';
+      });
+    };
 
     role = mkOption {
       description = lib.mdDoc ''
